@@ -48,7 +48,10 @@ class Myselect(discord.ui.Select):
         super().__init__(placeholder='Choose your favourite character',
                          min_values=1, max_values=1, options=options)
     async def callback(self, interaction: discord.Interaction):
-        await interaction.response.send_message(f'Your favourite colour is {self.values[0]}')
+        if '1' in interaction.data['values']:
+            await interaction.response.send_message("hi")
+        if '2' in interaction.data["values"]:
+            await interaction.response.send_message(f'Your favourite colour is {self.values[0]}')
 class menuview(discord.ui.View):
     def __init__(self):
         super().__init__()
