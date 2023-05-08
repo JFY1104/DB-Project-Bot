@@ -7,13 +7,12 @@ import asyncio
 
 
 bot = commands.Bot(command_prefix='*', intents=discord.Intents.all())
-
-
-bot_status = cycle(["Status 1", "Status 2", "Status 3"])
+bot_status = cycle(["Genshin Impact", "Star Rail", "Honkai 3rd"])
 
 
 @tasks.loop(seconds=5)
 async def change_status():
+    """ 轉換機器人遊戲狀態 """
     await bot.change_presence(activity=discord.Game(next(bot_status)))
 
 
@@ -29,6 +28,7 @@ async def load():
     for filename in os.listdir("DB-Project-Bot\cogs"):
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
+            print(f"cogs.{filename[:-3]} is already")
     
 
 
@@ -41,21 +41,28 @@ async def reload(ctx, extension):
 class Myselect(discord.ui.Select):
     def __init__(self):
         options = [
-            discord.SelectOption(label="red", value="1", description="this is red"),
-            discord.SelectOption(label="green", value="2",description="this is green"),
-            discord.SelectOption(label="blue", value="3",description="this is blue")
+            discord.SelectOption(label="red", value="1",
+                                 description="this is red"),
+            discord.SelectOption(label="green", value="2",
+                                 description="this is green"),
+            discord.SelectOption(label="blue", value="3",
+                                 description="this is blue")
         ]
         super().__init__(placeholder='Choose your favourite character',
                          min_values=1, max_values=1, options=options)
+
     async def callback(self, interaction: discord.Interaction):
         if '1' in interaction.data['values']:
             await interaction.response.send_message("hi")
-        if '2' in interaction.data["values"]:
+        elif '2' in interaction.data["values"]:
             await interaction.response.send_message(f'Your favourite colour is {self.values[0]}')
+
+
 class menuview(discord.ui.View):
     def __init__(self):
         super().__init__()
         self.add_item(Myselect())
+
 
 @bot.command()
 async def menu(ctx):
