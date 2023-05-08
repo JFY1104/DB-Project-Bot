@@ -5,10 +5,8 @@ from itertools import cycle
 import os
 import asyncio
 
-
 bot = commands.Bot(command_prefix='*', intents=discord.Intents.all())
 bot_status = cycle(["Genshin Impact", "Star Rail", "Honkai 3rd"])
-
 
 @tasks.loop(seconds=5)
 async def change_status():
