@@ -46,7 +46,7 @@ class Myselect2(discord.ui.Select):
             ),
             discord.SelectOption(label="職業介紹", value="職業", description="提供武器故事及卡面資料"),
         ]
-        super().__init__(placeholder="", min_values=1, max_values=1, options=options2)
+        super().__init__(placeholder="hi", min_values=1, max_values=1, options=options2)
 
     async def callback(
         self,
@@ -84,12 +84,36 @@ class menuview(discord.ui.View):
         super().__init__(timeout=timeout)
         self.add_item(Myselect())
 
+class search_category(discord.ui.View):
+    @discord.ui.select(
+        placeholder="請選擇要查詢的類別",
+        min_values=1, 
+        max_values=1, 
+        options = [
+            discord.SelectOption(label="世界", value="世界", description="提供各個星球的介紹"),
+            discord.SelectOption(
+                label="角色", value="角色", description="提供各角色的天賦,稀有度,職業介紹"
+            ),
+            discord.SelectOption(label="光錐(武器)", value="光錐", description="提供武器故事及卡面資料"),
+        ]
+        )
+    async def select(self,interaction:discord.Interaction,select_item:discord.ui.select):
+        self.answer = select_item.values
+        self.children[0].disabled = True
+        self.add_item(Myselect2())
+        await interaction.message.edit(view=self)
+        await interaction.response.defer()
+
 
 @bot.command()
 async def menu(ctx):
     view = menuview()
     await ctx.send(view=view)
 
+@bot.command()
+async def search(ctx):
+    view = search_category()
+    await ctx.send(view=view)
 
 async def main():
     async with bot:
