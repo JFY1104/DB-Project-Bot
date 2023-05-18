@@ -1,0 +1,50 @@
+embed/database to py
+
+1   for mysql
+        add_option() 
+
+2
+embeds="embeds": [
+            {
+                "title": "三月七",
+                "description": "一度沉睡於恆冰，對過去一無所知的少女。為了尋找身世的真相，選擇與銀河列車同行。目前為自己準備了約六十七種「身世故事」。",
+                "color": 432131,
+                "url": "https://wiki.hoyolab.com/pc/hsr/entry/7",
+                "author": {
+                    "name": "",
+                    "url": "https://discord.com",
+                    "icon_url": "https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/0047e5284a840424de8b21d1ccd042cd_933159568797000001.png"
+                },
+                "thumbnail": {
+                    "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+                },
+                "image": {
+                    "url": "https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/1721c5c450299615748e2fa4971e2746_2999314882560891227.png"
+                },
+                "footer": {
+                    "text": "我是誰？我來自哪裡？這些我都忘了，我賴在列車上，跟著它一站一站走下去，就能找到我的過去吧！",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "基本資料",
+                        "value": "陣營:無名客\n所屬:星穹列車",
+                        "inline": true
+
+                    },
+                                    {
+                        "name": "戰鬥資料",
+                        "value": "命途:存護\n稀有度:★5\n屬性:冰\n",
+                    "inline": true
+
+                    },
+                    {
+                        "name": "聲優",
+                        "value": "華語CV:諾亞\n日語CV:小倉唯\n英語CV:Skyler Davenport\n韓語CV:정혜원\n",
+                        "inline": false
+                    }
+                    
+                ]
+            }
+        ]
+    }
