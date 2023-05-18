@@ -6,7 +6,6 @@ import asyncio
 
 bot = commands.Bot(command_prefix="*", intents=discord.Intents.all())
 bot_status = cycle(["Genshin Impact", "Star Rail", "Honkai 3rd"])
-
 @tasks.loop(seconds=5)
 async def change_status():
     """轉換機器人遊戲狀態"""
@@ -46,20 +45,69 @@ class characterinfo(discord.ui.Select):
         interaction: discord.Interaction,
     ):
         pass
-class characterlist(discord.ui.Select):
+
+class search_danhen_info(discord.ui.Select):
     def __init__(self):
         options2 = [
-            discord.SelectOption(label="三月七", value="三月七", description=""),
-            discord.SelectOption(label="丹恆", value="丹恆", description=""),
-            discord.SelectOption(label="主角", value="主角", description=""),
+            discord.SelectOption(label="基本資料", value="基本資料", description=""),
+            discord.SelectOption(label="行跡", value="行跡", description=""),
+            discord.SelectOption(label="星魂", value="星魂", description=""),
         ]
-        super().__init__(placeholder="請選擇想查詢的角色資料", min_values=1, max_values=1, options=options2)
+        super().__init__(placeholder="請選擇想查詢的資料", min_values=1, max_values=1, options=options2)
 
     async def callback(
         self,
         interaction: discord.Interaction,
     ):
-        pass
+        print(characterlist.option_value)
+        if  self.values[0] == '基本資料':
+            print("丹恆的基本資料")
+        elif  self.values[0] == '行跡':
+            print("丹恆的行跡")
+        elif  self.values[0] == '星魂':
+            print("丹恆的星魂")
+
+class search_jfy_info(discord.ui.Select):
+    def __init__(self):
+        options2 = [
+            discord.SelectOption(label="基本資料", value="基本資料", description=""),
+            discord.SelectOption(label="行跡", value="行跡", description=""),
+            discord.SelectOption(label="星魂", value="星魂", description=""),
+        ]
+        super().__init__(placeholder="請選擇想查詢的資料", min_values=1, max_values=1, options=options2)
+
+    async def callback(
+        self,
+        interaction: discord.Interaction,
+    ):
+        print(characterlist.option_value)
+        if  self.values[0] == '基本資料':
+            print("主角的基本資料")
+        elif  self.values[0] == '行跡':
+            print("主角的行跡")
+        elif  self.values[0] == '星魂':
+            print("主角的星魂")
+class search_marchseven_info(discord.ui.Select):
+    def __init__(self):
+        options2 = [
+            discord.SelectOption(label="基本資料", value="基本資料", description=""),
+            discord.SelectOption(label="行跡", value="行跡", description=""),
+            discord.SelectOption(label="星魂", value="星魂", description=""),
+        ]
+        super().__init__(placeholder="請選擇想查詢的資料", min_values=1, max_values=1, options=options2)
+
+    async def callback(
+        self,
+        interaction: discord.Interaction,
+    ):
+        print(characterlist.option_value)
+        if  self.values[0] == '基本資料':
+            print("三月七的基本資料")
+        elif  self.values[0] == '行跡':
+            print("三月七的行跡")
+        elif  self.values[0] == '星魂':
+            print("三月七的星魂")
+
 class world(discord.ui.Select):
     def __init__(self):
         options2 = [
@@ -115,6 +163,37 @@ class menuview(discord.ui.View):
     def __init__(self, *, timeout: float | None = 180):
         super().__init__(timeout=timeout)
         self.add_item(Myselect())
+class characterlist(discord.ui.View):
+    option_value =""
+    @discord.ui.select(
+        placeholder="請選擇要查詢的類別",
+        min_values=1, 
+        max_values=1,
+        options = [
+            discord.SelectOption(label="三月七", value="三月七", description=""),
+            discord.SelectOption(label="丹恆", value="丹恆", description=""),
+            discord.SelectOption(label="主角", value="主角", description=""),
+        ]
+        )
+    async def callback(self,interaction:discord.Interaction,select):
+        if select.values[0] == '三月七':
+            select.disabled = True
+            await interaction.response.defer()
+            self.add_item(search_marchseven_info())
+            await interaction.message.edit(view=self)
+        elif select.values[0] == '丹恆':
+            option_value = select.values[0]
+            select.disabled = True
+            await interaction.response.defer()
+            self.add_item(search_danhen_info())
+            await interaction.message.edit(view=self)
+        elif select.values[0] == '主角':
+            option_value = select.values[0]
+            select.disable = True
+            await interaction.response.defer()
+            self.add_item(search_jfy_info())
+            await interaction.message.edit(view=self)
+
 class search_category(discord.ui.View):
     @discord.ui.select(
         placeholder="請選擇要查詢的類別",
@@ -134,8 +213,7 @@ class search_category(discord.ui.View):
             await interaction.response.defer()
         elif select.values[0] == '角色':
             select.disabled = True
-            self.add_item(characterlist())
-            await interaction.message.edit(view=self)
+            await interaction.response.send_message(view=characterlist())
             await interaction.response.defer()
         elif select.values[0] == '光錐':
             select.disabled = True
