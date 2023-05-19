@@ -91,7 +91,7 @@ class search_marchseven_info(discord.ui.Select):
                                               color=0x3498DB,
                                               url="https://wiki.hoyolab.com/pc/hsr/entry/7")
             march7_info_embed.set_thumbnail(url="https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/0047e5284a840424de8b21d1ccd042cd_933159568797000001.png")
-            march7_info_embed.set_image(url="https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/1721c5c450299615748e2fa4971e2746_2999314882560891227.png")
+            """ march7_info_embed.set_image(url="https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/1721c5c450299615748e2fa4971e2746_2999314882560891227.png") """
             march7_info_embed.add_field(name="基本資料",
                                         value="陣營:無名客\n所屬:星穹列車",
                                         inline=True)
@@ -101,6 +101,7 @@ class search_marchseven_info(discord.ui.Select):
             march7_info_embed.add_field(name="聲優",
                                         value="華語CV:諾亞\n日語CV:小倉唯\n英語CV:Skyler Davenport\n韓語CV:정혜원",
                                         inline=False)
+            march7_info_embed.set_image(url="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/03/20/125413385/f638dbaf3994bbac67972792e450a362_4599282032612966860.gif")
             await interaction.message.edit(embed=march7_info_embed)
             await interaction.response.defer()
         elif  self.values[0] == '行跡':
