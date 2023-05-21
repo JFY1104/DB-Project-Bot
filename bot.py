@@ -84,7 +84,6 @@ class search_marchseven_info(discord.ui.Select):
         self,
         interaction: discord.Interaction,
     ):
-        print(characterlist.option_value)
         if  self.values[0] == '基本資料':
             march7_info_embed = discord.Embed(title= "三月七",
                                               description="一度沉睡於恆冰，對過去一無所知的少女。為了尋找身世的真相，選擇與銀河列車同行。目前為自己準備了約六十七種「身世故事」。",
@@ -96,12 +95,12 @@ class search_marchseven_info(discord.ui.Select):
                                         value="陣營:無名客\n所屬:星穹列車",
                                         inline=True)
             march7_info_embed.add_field(name="戰鬥資料",
-                                        value="命途:存護\n稀有度:★5\n屬性:冰",
+                                        value="命途:存護\n稀有度:★4\n屬性:冰",
                                         inline=True) 
             march7_info_embed.add_field(name="聲優",
                                         value="華語CV:諾亞\n日語CV:小倉唯\n英語CV:Skyler Davenport\n韓語CV:정혜원",
                                         inline=False)
-            march7_info_embed.set_image(url="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/03/20/125413385/f638dbaf3994bbac67972792e450a362_4599282032612966860.gif")
+            march7_info_embed.set_image(url="https://media.tenor.com/OQiJiZ0MzycAAAAC/honkai-star-rail.gif")
             await interaction.message.edit(embed=march7_info_embed)
             await interaction.response.defer()
         elif  self.values[0] == '行跡':
@@ -111,23 +110,23 @@ class search_marchseven_info(discord.ui.Select):
                                               )
             march7_talent_embed.add_field(name="普通攻擊:極寒弓矢",
                                           value="對指定敵方單體造成等同於三月七50%攻擊力的冰屬性傷害。",
-                                          inline=True
+                                          inline=False
                 )
             march7_talent_embed.add_field(name="戰技:可愛即是正義",
                                           value="為指定我方單體施加強度等同於三月七38%防禦力+190護盾,持續3回合。若該目標生命值百分比大於等於30%，則遭到敵方攻擊的機率大幅提高。",
-                                          inline=True
+                                          inline=False
                 )
             march7_talent_embed.add_field(name="終結技:冰刻箭雨之時",
                                           value="對敵方全體造成等同於三月七90%攻擊力的冰屬性傷害。受到攻擊的敵方目標有50%基礎機率陷入凍結狀態,持續1回合。凍結狀態下,敵方目標不能行動,並且在每回合開始時受到等同於三月七30%攻擊力的冰屬性持續傷害。",
-                                          inline=True
+                                          inline=False
                 )
             march7_talent_embed.add_field(name="天賦:少女的特權",
                                           value="當持有護盾的我方目標受到敵方目標攻擊後,三月七立即向攻擊者發動反擊,對其造成等同於三月七50%攻擊力的冰屬性傷害,該效果每回合可觸發2次。",
-                                          inline=True
+                                          inline=False
                 )
             march7_talent_embed.add_field(name="密技:凍人的瞬間",
                                           value="立即攻擊敵人,進入戰鬥後有100%的基礎機率使隨機敵方單體陷入凍結狀態,持續1回合。\n凍結狀態下,敵方目標不能行動,同時每回合開始時受到等同於三月七50%攻擊力的冰屬性附加傷害。",
-                                          inline=True
+                                          inline=False
                 )
             
             march7_talent_embed.set_image(url="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/03/20/125413385/95b4be2fe86a2b681e53824e5c15e196_1074394868228546975.gif")
@@ -142,23 +141,23 @@ class search_marchseven_info(discord.ui.Select):
                                           value="終結技每凍結1個目標，為三月七恢復6點能量。",
                                           inline=False
                 )
-            march7_star_embed.add_field(name="星魂二",
+            march7_star_embed.add_field(name="星魂二:記憶中的它",
                                           value="進入戰鬥時，為生命值百分比最低的我方目標提供強度等同於三月七24%防禦力+320的護盾，持續3回合。",
                                           inline=False
                 )
-            march7_star_embed.add_field(name="星魂三",
+            march7_star_embed.add_field(name="星魂三:記憶中的一切",
                                           value="終結技等級+2，最多不超過15級；普通攻擊等級+1，最多不超過10級。",
                                           inline=False
                 )
-            march7_star_embed.add_field(name="星魂四",
+            march7_star_embed.add_field(name="星魂四:不願再失去",
                                           value="天賦的反擊效果每回合可觸發的次數增加1次。使反擊造成的傷害值提高，提高數值等同於三月七防禦力的30%。",
                                           inline=False
                 )
-            march7_star_embed.add_field(name="星魂五",
+            march7_star_embed.add_field(name="星魂五:不想再忘卻",
                                           value="戰技等級+2，最多不超過15級；天賦等級+2，最多不超過15級。",
                                           inline=False
                 )
-            march7_star_embed.add_field(name="星魂六",
+            march7_star_embed.add_field(name="星魂六:就這樣，一直……",
                                           value="在戰技提供的護盾保護下的我方目標，每回合開始時回復等同於各自4%生命上限+106的生命值。",
                                           inline=False
                 )
@@ -166,7 +165,101 @@ class search_marchseven_info(discord.ui.Select):
             march7_star_embed.set_image(url="https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyolab-wiki/2023/04/28/125413385/db3a53277b7f8001542acae757e7ed58_4234173604942154140.png")
             await interaction.message.edit(embed=march7_star_embed)
             await interaction.response.defer()
+
+class search_jinyun_info(discord.ui.Select):
+    def __init__(self):
+        options2 = [
+            discord.SelectOption(label="基本資料", value="基本資料", description=""),
+            discord.SelectOption(label="行跡", value="行跡", description=""),
+            discord.SelectOption(label="星魂", value="星魂", description=""),
+        ]
+        super().__init__(placeholder="請選擇想查詢的資料", min_values=1, max_values=1, options=options2)
+
+    async def callback(
+        self,
+        interaction: discord.Interaction,
+    ):
+        if  self.values[0] == '基本資料':
+            jinyun_info_embed = discord.Embed(title= "景元",
+                                              description="仙舟聯盟的六位將軍之一，節制仙舟「羅浮」的雲騎軍。\n師從前代「羅浮」劍首，但並不顯名於武力。",
+                                              color=0xEEEFF1,
+                                              url="https://wiki.hoyolab.com/pc/hsr/entry/26")
+            jinyun_info_embed.set_thumbnail(url="https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/df37aacd31ab40efdcb16ef03a5b68ed_4983283866355038276.png")
+            """ march7_info_embed.set_image(url="https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/1721c5c450299615748e2fa4971e2746_2999314882560891227.png") """
+            jinyun_info_embed.add_field(name="基本資料",
+                                        value="陣營:仙舟聯盟\n所屬:仙舟「羅浮」",
+                                        inline=True)
+            jinyun_info_embed.add_field(name="戰鬥資料",
+                                        value="命途:智識\n稀有度:★5\n屬性:雷",
+                                        inline=True) 
+            jinyun_info_embed.add_field(name="聲優",
+                                        value="華語CV:孫曄\n日語CV:小野大輔\n英語CV:Alejandro Saab\n韓語CV:류승곤",
+                                        inline=False)
+            jinyun_info_embed.set_image(url="https://media.tenor.com/H0PNUUY8jnwAAAAd/starrail-jingyuan.gif")
+            await interaction.message.edit(embed=jinyun_info_embed)
+            await interaction.response.defer()
+        elif  self.values[0] == '行跡':
+            jinyun_talent_embed = discord.Embed(title= "景元",
+                                              description="",
+                                              color=0xEEEFF1,
+                                              )
+            jinyun_talent_embed.add_field(name="普通攻擊:石火流光",
+                                          value="對指定敵方單體造成等同於景元50%攻擊力的雷屬性傷害。",
+                                          inline=False
+                )
+            jinyun_talent_embed.add_field(name="戰技:紫霄震曜",
+                                          value="對敵方全體造成等同於景元50%攻擊力的雷屬性傷害，同時增加2段【神君】下回合的攻擊段數。",
+                                          inline=False
+                )
+            jinyun_talent_embed.add_field(name="終結技:吾身光明",
+                                          value="對敵方全體造成等同於景元120%攻擊力的雷屬性傷害，同時增加3段【神君】下回合的攻擊段數。",
+                                          inline=False
+                )
+            jinyun_talent_embed.add_field(name="天賦:斬勘神形",
+                                          value="戰鬥開始時召喚【神君】。【神君】初始擁有60點速度以及3段攻擊段數，行動時發動追加攻擊，每段攻擊對隨機敵方單體造成等同於景元攻擊力33%的雷屬性傷害，同時對其相鄰目標造成等同於主目標25%的雷屬性傷害。\n【神君】最多累計10段攻擊段數且每增加1段攻擊段數，速度提高10點，行動結束後速度和攻擊段數恢復至初始狀態。當景元陷入無法戰鬥狀態時【神君】消失。當景元受到控制類負面狀態影響時【神君】也無法行動。",
+                                          inline=False
+                )
+            jinyun_talent_embed.add_field(name="密技:持籙",
+                                          value="用秘技後，下一次戰鬥開始時【神君】第1回合的攻擊段數增加3段。",
+                                          inline=False
+                )
             
+            jinyun_talent_embed.set_image(url="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/16/125413385/9924a49340890a487fd34fd6c81fa320_3498437733606547324.gif")
+            await interaction.message.edit(embed=jinyun_talent_embed)
+            await interaction.response.defer()
+        elif  self.values[0] == '星魂':
+            jinyun_star_embed = discord.Embed(title= "景元",
+                                              description="",
+                                              color=0xEEEFF1,
+                                              )
+            jinyun_star_embed.add_field(name="星魂一:星流霆擊碎昆岡",
+                                          value="【神君】施放攻擊時，對指定敵方單體的相鄰目標造成的傷害倍率額外提高，提高數值等同於對主目標傷害倍率的25%。",
+                                          inline=False
+                )
+            jinyun_star_embed.add_field(name="星魂二:戎戈動地開天陣",
+                                          value="【神君】行動後，景元的普攻、戰技、終結技造成的傷害提高20%，持續2回合。",
+                                          inline=False
+                )
+            jinyun_star_embed.add_field(name="星魂三:移鋒驚電衝霄漢",
+                                          value="終結技等級+2，最多不超過15級；普通攻擊等級+1，最多不超過10級。",
+                                          inline=False
+                )
+            jinyun_star_embed.add_field(name="星魂四:刃卷橫雲落玉沙",
+                                          value="【神君】每段攻擊後，景元恢復2點能量。",
+                                          inline=False
+                )
+            jinyun_star_embed.add_field(name="星魂五:百戰棄軀輕死生",
+                                          value="戰技等級+2，最多不超過15級；天賦等級+2，最多不超過15級。",
+                                          inline=False
+                )
+            jinyun_star_embed.add_field(name="星魂六:威靈有應破敵讎",
+                                          value="【神君】每段攻擊後會使指定敵方目標額外陷入易傷狀態。易傷狀態下的敵方目標受到的傷害提高12 %，持續至【神君】本次攻擊結束，該效果最多疊加3層。",
+                                          inline=False
+                )
+            
+            jinyun_star_embed.set_image(url="https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyolab-wiki/2023/04/28/125413385/e4ffd8cb504b25046bc61be6ca89fee4_8632838892177407721.png")
+            await interaction.message.edit(embed=jinyun_star_embed)
+            await interaction.response.defer()
 class artifact(discord.ui.Select):
     def __init__(self):
         options2 = [
@@ -263,7 +356,7 @@ class characterinfo(discord.ui.Select):
 class characterlist(discord.ui.View):
     option_value =""
     @discord.ui.select(
-        placeholder="請選擇要查詢的類別",
+        placeholder="請選擇要查詢的角色",
         min_values=1, 
         max_values=1,
         options = [
@@ -301,6 +394,11 @@ class characterlist(discord.ui.View):
             select.disable = True
             await interaction.response.defer()
             self.add_item(search_jfy_info())
+            await interaction.message.edit(view=self)
+        elif select.values[0] == '景元':
+            select.disabled = True
+            await interaction.response.defer()
+            self.add_item(search_jinyun_info())
             await interaction.message.edit(view=self)
 class search_category(discord.ui.View):
     @discord.ui.select(
