@@ -1,9 +1,11 @@
+#coding:utf-8
 import discord
 from discord.ext import commands, tasks
 from itertools import cycle
 import os
 import asyncio
 from discord import embeds
+
 
 bot = commands.Bot(command_prefix="*", intents=discord.Intents.all())
 bot_status = cycle(["Genshin Impact", "Star Rail", "Honkai 3rd"])
@@ -165,7 +167,6 @@ class search_marchseven_info(discord.ui.Select):
             march7_star_embed.set_image(url="https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyolab-wiki/2023/04/28/125413385/db3a53277b7f8001542acae757e7ed58_4234173604942154140.png")
             await interaction.message.edit(embed=march7_star_embed)
             await interaction.response.defer()
-
 class search_jinyun_info(discord.ui.Select):
     def __init__(self):
         options2 = [
@@ -334,25 +335,26 @@ class weaponinfo(discord.ui.Select):
             weapon_info_embed.set_image(url="https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/f342952758193dcdcd8dd1dde1cc969d_4815329713662711142.png")
             await interaction.message.edit(embed=weapon_info_embed)
             await interaction.response.defer()
+        elif self.values[0] == "拂曉之前" :
+            weapon_info_embed = discord.Embed(title= "拂曉之前",
+                                              description="「將軍，此事請務必慎重……往後歷史會怎麼評論將軍您……」\n雲騎將軍雙目半闔，聽取手下來報。\n「歷史自然會有判斷，但我對歷史的結論無甚興趣。」\n「事成，我此時便是胸有成竹，神閒氣定。」\n「事敗，我此時便是逸樂無度，愛雀失眾。」\n一隻雀兒跳下他的肩膀，他順勢抬手接住。\n「我只是做了我的判斷罷了。」",
+                                              color=0xEEEFF1,
+                                              url="https://wiki.hoyolab.com/pc/hsr/entry/73")
+            weapon_info_embed.add_field(name="基本資訊",
+                                        value="名稱:拂曉之前\n命途:智識",
+                                        inline=True)
+            weapon_info_embed.add_field(name="屬性",
+                                        value="生命值:48-1058\n攻擊力:26-582\n防禦力:21-463",
+                                        inline=True)            
+            weapon_info_embed.add_field(name="光錐效果",
+                                        value="使裝備者暴擊傷害提高36%/42%/48%/54%/60%。使裝備者戰技和終結技造成的傷害提高18%/21%/24%/27%/30%。裝備者施放戰技或終結技後，獲得【夢身】效果。觸發追加攻擊時，消耗【夢身】，使追加攻擊造成的傷害提高48%/56%/64%/72%/80%。",
+                                        inline=False) 
+            weapon_info_embed.set_image(url="https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/ac79e739072fa86b2f6d5f851bb2c916_952669953280599733.png")
+            await interaction.message.edit(embed=weapon_info_embed)
+            await interaction.response.defer()
+        
 
 
-
-class characterinfo(discord.ui.Select):
-    def __init__(self):
-        options2 = [
-            discord.SelectOption(label="天賦", value="天賦", description="提供各個星球的介紹"),
-            discord.SelectOption(
-                label="稀有度", value="稀有度", description="提供各角色的天賦,稀有度,職業介紹"
-            ),
-            discord.SelectOption(label="職業介紹", value="職業", description="提供武器故事及卡面資料"),
-        ]
-        super().__init__(placeholder="請選擇想查詢的角色資料", min_values=1, max_values=1, options=options2)
-
-    async def callback(
-        self,
-        interaction: discord.Interaction,
-    ):
-        pass
 class characterlist(discord.ui.View):
     option_value =""
     @discord.ui.select(
@@ -407,7 +409,7 @@ class search_category(discord.ui.View):
         max_values=1, 
         options = [
             discord.SelectOption(label="遺器(裝備)", value="遺器", description="提供各個遺器套裝的介紹"),
-            discord.SelectOption(label="角色", value="角色", description="提供各角色的天賦,稀有度,職業介紹"),
+            discord.SelectOption(label="角色", value="角色", description="提供各角色的行跡,故事,命途介紹"),
             discord.SelectOption(label="光錐(武器)", value="光錐", description="提供武器故事及卡面資料")
         ]
         )
