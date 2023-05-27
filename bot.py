@@ -298,6 +298,22 @@ class artifact(discord.ui.Select):
                                         inline=False) 
             await interaction.message.edit(embed=artifact_info_embed)
             await interaction.response.defer()
+        if self.values[0] == "量子套":
+                   
+            artifact_info_embed = discord.Embed(title= "繁星璀璨的天才",
+                                              description="",
+                                              color=0x3498DB,
+                                              url="https://wiki.hoyolab.com/pc/hsr/entry/145")
+            artifact_info_embed.set_thumbnail(url="https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/67b9c778a1a6080472e6b1deeb340d37_3108138781323191767.png")
+            artifact_info_embed.add_field(name="基本資訊:",
+                                        value="名稱:繁星璀璨的天才\n來源:睿治之徑·侵蝕隧洞",
+                                        inline=True)
+            artifact_info_embed.add_field(name="遺器效果:",
+                                        value="二件套:量子屬性傷害提高10%。\n四件套:當裝備者對敵方目標造成傷害時，無視其10%的防禦力。若目標擁有量子屬性弱點，則額外無視其10%的防禦力。",
+                                        inline=False) 
+            await interaction.message.edit(embed=artifact_info_embed)
+            await interaction.response.defer()
+        
 class weaponinfo(discord.ui.Select):
     def __init__(self):
         
