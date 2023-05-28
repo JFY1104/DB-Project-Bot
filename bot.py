@@ -313,6 +313,21 @@ class artifact(discord.ui.Select):
                                         inline=False) 
             await interaction.message.edit(embed=artifact_info_embed)
             await interaction.response.defer()
+        if self.values[0] == "雷套":
+                   
+            artifact_info_embed = discord.Embed(title= "激奏雷電的樂團",
+                                              description="",
+                                              color=0x5865F2,
+                                              url="https://wiki.hoyolab.com/pc/hsr/entry/136")
+            artifact_info_embed.set_thumbnail(url="https://wiki.hoyolab.com/_ipx/f_webp/https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/8e9b516a3edf2bbeecaf28cc4bee48dd_6971515504882803680.png")
+            artifact_info_embed.add_field(name="基本資訊:",
+                                        value="名稱:激奏雷電的樂團\n來源:聖頌之徑·侵蝕隧洞",
+                                        inline=True)
+            artifact_info_embed.add_field(name="遺器效果:",
+                                        value="二件套:雷屬性傷害提高10%。\n四件套:當裝備者施放戰技時，使裝備者的攻擊力提高20%，持續1回合。",
+                                        inline=False) 
+            await interaction.message.edit(embed=artifact_info_embed)
+            await interaction.response.defer()
         
 class weaponinfo(discord.ui.Select):
     def __init__(self):
